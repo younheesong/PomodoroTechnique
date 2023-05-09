@@ -1,27 +1,25 @@
-import { HeaderMenus } from "@/data/HeaderMenus";
-import { classNames } from "@/utils/common";
+import NavItem from "./layout/components/NavItem";
+import SidebarSection from "./layout/components/SidebarSection";
 const Sidebar = () => {
   return (
-    <div className="hidden md:flex flex-grow flex-col overflow-y-auto">
-      <div className="flex flex-shrink-0 items-center px-4"></div>
-      <div className="mt-5 flex flex-1 flex-col">
-        <nav className="flex-1 space-y-1 px-2 pb-4">
-          {HeaderMenus.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={classNames(
-                item.current ? "bg-gray-800" : " hover:bg-gray-800",
-                "group text-white flex items-center px-2 py-2 text-sm font-medium rounded-md"
-              )}
-            >
-              {item.icon}
-              {item.name}
-            </a>
-          ))}
-        </nav>
-      </div>
-    </div>
+    <SidebarSection>
+      <NavItem to="/">
+        <NavItem.Icon iconName="ClipboardDocumentListIcon" />
+        <NavItem.Label label="To Dos" />
+      </NavItem>
+      <NavItem to="/">
+        <NavItem.Icon iconName="ViewColumnsIcon" />
+        <NavItem.Label label="Canvan" />
+      </NavItem>
+      <NavItem to="/">
+        <NavItem.Icon iconName="ClipboardDocumentCheckIcon" />
+        <NavItem.Label label="Completed Tasks" />
+      </NavItem>
+      <NavItem to="/">
+        <NavItem.Icon iconName="Cog6ToothIcon" />
+        <NavItem.Label label="Settings" />
+      </NavItem>
+    </SidebarSection>
   );
 };
 export default Sidebar;
