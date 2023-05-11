@@ -1,16 +1,17 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useSidebarStore } from "@/stores/store";
 const SidebarDialog = ({ children }: { children: JSX.Element }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { toggleSidebar, setToggleSidebar } = useSidebarStore();
   return (
-    <Transition.Root show={sidebarOpen} as={Fragment}>
+    <Transition.Root show={toggleSidebar} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50 lg:hidden"
-        onClose={setSidebarOpen}
+        onClose={setToggleSidebar}
       >
         <Transition.Child
           as={Fragment}
@@ -21,7 +22,7 @@ const SidebarDialog = ({ children }: { children: JSX.Element }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-900/80" />
+          <div className="fixed inset-0 bg-zinc-900/80" />
         </Transition.Child>
 
         <div className="fixed inset-0 flex">
@@ -48,7 +49,7 @@ const SidebarDialog = ({ children }: { children: JSX.Element }) => {
                   <button
                     type="button"
                     className="-m-2.5 p-2.5"
-                    onClick={() => setSidebarOpen(false)}
+                    onClick={() => setToggleSidebar(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
                     <XMarkIcon
@@ -59,7 +60,7 @@ const SidebarDialog = ({ children }: { children: JSX.Element }) => {
                 </div>
               </Transition.Child>
 
-              <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
+              <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-zinc-900 px-3 pb-2 ring-1 ring-white/10">
                 {children}
               </div>
             </Dialog.Panel>
