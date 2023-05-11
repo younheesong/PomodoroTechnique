@@ -1,4 +1,5 @@
 import "./globals.css";
+import Header from "./header";
 import Sidebar from "./sidebar";
 export default function RootLayout({
   children,
@@ -14,11 +15,13 @@ export default function RootLayout({
       <head />
 
       <body className="bg-zinc-900  min-h-screen">
-        <div className="flex min-h-screen">
-          <div className="w-[200px]">
+        <div className="min-h-screen">
+          <Header />
+          <div className="flex">
             <Sidebar />
+
+            <div>{children}</div>
           </div>
-          <div>{children}</div>
         </div>
       </body>
     </html>
