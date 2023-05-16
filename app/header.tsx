@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import SidebarDialog from "./layout/components/SidebarDialog";
 import SidebarToggleButton from "./layout/components/SidebarToggleButton";
 import Sidebar from "./sidebar";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -15,13 +16,15 @@ const Header = () => {
         Pomodoro
       </div>
       <div>
-        <Button
-          bgColor="bg-white"
-          textColor="text-zinc-900"
-          borderRound="rounded-md"
-        >
-          <span className="text-sm">Login</span>
-        </Button>
+        <Link href="/accounts/login">
+          <Button
+            bgColor="bg-white"
+            textColor="text-zinc-900"
+            borderRound="rounded-md"
+          >
+            <span className="px-4 text-sm tracking-tight">로그인</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );
