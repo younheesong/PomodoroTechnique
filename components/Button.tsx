@@ -1,20 +1,22 @@
 const Button = ({
   children,
   onClick,
-  bgColor = "bg-gray-800",
+  bgColor = "bg-zinc-900",
   textColor = "text-white",
   borderRound = "rounded-sm",
+  height = "",
 }: {
   children: React.ReactNode;
-  onClick?: any;
+  onClick?: () => void;
   bgColor?: string;
   textColor?: string;
   borderRound?: string;
+  height?: string;
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`p-2.5 ${textColor} ${bgColor} ${borderRound}`}
+      className={`w-full px-2 py-1.5 ${textColor} ${bgColor} ${borderRound} ${height}`}
     >
       {children}
     </button>
