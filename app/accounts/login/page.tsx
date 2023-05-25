@@ -1,6 +1,10 @@
+"use client";
 import Button from "@/components/Button";
+import { useUserContext } from "@/contexts/userContext";
 
 const Login = () => {
+  const { signInWithGoogle } = useUserContext();
+
   return (
     <div className="mx-auto px-10 w-full max-w-sm space-y-10">
       <div>
@@ -15,6 +19,7 @@ const Login = () => {
           textColor="text-gray-700"
           borderRound="rounded-md"
           height="h-12"
+          onClick={() => signInWithGoogle()}
         >
           <div className="flex gap-4 justify-center font-medium">
             <img

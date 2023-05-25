@@ -15,7 +15,18 @@ const useFirebaseAuth = () => {
         provider
       );
       if (signInResult.user) {
-        console.info(signInResult.user);
+        await fetch("/api/users.add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uid: signInResult.user.uid,
+            email: signInResult.user.email,
+            displayName: signInResult.user.displayName,
+            photoURL: signInResult.user.photoURL,
+          }),
+        });
       }
     } catch (err) {
       console.error(err);
