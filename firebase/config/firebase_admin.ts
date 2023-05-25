@@ -1,12 +1,4 @@
 import * as admin from "firebase-admin";
-
-interface Config {
-  credential: {
-    privateKey: string;
-    clientEmail: string;
-    projectId: string;
-  };
-}
 export default class FirebaseAdmin {
   public static instance: FirebaseAdmin;
 
@@ -31,15 +23,10 @@ export default class FirebaseAdmin {
       this.init = true;
       return;
     }
-    const config: Config = {
-      credential: {
-        projectId: process.env.projectId || "",
-        clientEmail: process.env.clientEmail || "",
-        privateKey: (process.env.privateKey || "").replace(/\\n/g, "\n"),
-      },
-    };
+    const config = require("../../.admin-cred.json");
+
     admin.initializeApp({
-      credential: admin.credential.cert(config.credential),
+      credential: admin.credential.cert(config),
     });
     console.info("bootstrap firebase admin");
   }
