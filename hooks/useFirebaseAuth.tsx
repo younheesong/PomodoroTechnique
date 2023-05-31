@@ -4,10 +4,12 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
 import nookies from "nookies";
 import { getUserData } from "@/firebase/db/client/users.service";
+import { usePathname, useRouter } from "next/navigation";
 const useFirebaseAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const pathname = usePathname();
+  const router = useRouter();
   async function signInWithGoogle(): Promise<void> {
     const provider = new GoogleAuthProvider();
     try {
@@ -38,18 +40,25 @@ const useFirebaseAuth = () => {
     setUser(null);
     setLoading(true);
   };
+  const reload = () => {
+    console.log("hihi");
+    console.log(pathname);
+    router.replace(pathname);
+  };
 
   const signOut = () =>
     FirebaseClient.getInstance()
       .Auth.signOut()
       .then(() => {
-        clear();
+        setUser(null);
+        setLoading(false);
         nookies.set(undefined, "token", "", { path: "/" });
       });
   const authStateChanged = async (authUser: any) => {
     if (authUser === null) {
       setUser(null);
       setLoading(false);
+      reload();
       return;
     }
     setLoading(true);
@@ -59,8 +68,8 @@ const useFirebaseAuth = () => {
     //setUser 처리
     const user = await getUserData(authUser?.uid);
     setUser(user);
-
     setLoading(false);
+    reload();
   };
   useEffect(() => {
     const unsubscribe =
