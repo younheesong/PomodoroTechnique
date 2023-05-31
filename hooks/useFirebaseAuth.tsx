@@ -3,6 +3,7 @@ import { User } from "@/firebase/models/user.model";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
 import nookies from "nookies";
+import { getUserData } from "@/firebase/db/client/users.service";
 const useFirebaseAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -46,20 +47,24 @@ const useFirebaseAuth = () => {
         nookies.set(undefined, "token", "", { path: "/" });
       });
   const authStateChanged = async (authUser: any) => {
-    if (user === null) {
+    if (authUser === null) {
       setUser(null);
       setLoading(false);
       return;
     }
     setLoading(true);
+    //token 처리
     const token = await authUser.getIdToken();
     nookies.set(undefined, "token", token, { path: "/" });
     //setUser 처리
+    const user = await getUserData(authUser?.uid);
+    setUser(user);
+
     setLoading(false);
   };
   useEffect(() => {
     const unsubscribe =
-      FirebaseClient.getInstance().Auth.onAuthStateChanged(authStateChanged);
+      FirebaseClient.getInstance().Auth.onIdTokenChanged(authStateChanged);
     return () => unsubscribe();
   }, []);
 
