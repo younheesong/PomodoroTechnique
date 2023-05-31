@@ -1,15 +1,17 @@
-export async function withAuth(req, res, redirect = null) {
+import { NextResponse } from "next/server";
+
+export async function withAuth(req, redirect = null) {
   let redirectUrl = new URL("/accounts/login", req.url);
   if (redirect) {
     redirectUrl = new URL(redirect, req.url);
   }
   const token = req.cookies.get("token")?.value;
   if (!token) {
-    return res.redirect(redirectUrl);
+    return NextResponse.redirect(redirectUrl);
   }
   let decodedToken;
   try {
-    decodedToken = await fetch("http://localhost:3000/api/auth", {
+    decodedToken = await fetch(`${process.env.DOMAIN_URL}/api/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,11 +20,11 @@ export async function withAuth(req, res, redirect = null) {
         token: token,
       }),
     });
-    if (!decodedToken) return res.redirect(redirectUrl);
+    if (!decodedToken) return NextResponse.redirect(redirectUrl);
   } catch (e) {
     console.log(e);
 
-    return res.redirect(redirectUrl);
+    return NextResponse.redirect(redirectUrl);
   }
-  return res.next();
+  return NextResponse.next();
 }

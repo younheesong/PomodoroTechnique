@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { withoutAuth } from "./middlewares/withoutAuth";
 import { withAuth } from "./middlewares/withAuth";
@@ -7,11 +6,11 @@ import { withAuth } from "./middlewares/withAuth";
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/accounts/login")) {
     console.log("middleware");
-    return await withoutAuth(request, NextResponse);
+    return await withoutAuth(request);
   }
   if (request.nextUrl.pathname.startsWith("/users/profile")) {
     console.log("middleware");
-    return await withAuth(request, NextResponse);
+    return await withAuth(request);
   }
 }
 

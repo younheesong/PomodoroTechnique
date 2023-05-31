@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function withoutAuth(req, res, redirect = null) {
+export async function withoutAuth(req, redirect = null) {
   let redirectUrl = new URL("/", req.url);
   if (redirect) {
     redirectUrl = new URL(redirect, req.url);
@@ -9,11 +9,11 @@ export async function withoutAuth(req, res, redirect = null) {
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
-    return res.next();
+    return NextResponse.next();
   }
   let decodedToken;
   try {
-    decodedToken = await fetch("http://localhost:3000/api/auth", {
+    decodedToken = await fetch(`${process.env.DOMAIN_URL}/api/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,12 +24,12 @@ export async function withoutAuth(req, res, redirect = null) {
     });
 
     if (decodedToken) {
-      return res.redirect(redirectUrl);
+      return NextResponse.redirect(redirectUrl);
     }
   } catch (e) {
     console.log(e);
-    return res.next();
+    return NextResponse.next();
   }
 
-  return res.next();
+  return NextResponse.next();
 }
