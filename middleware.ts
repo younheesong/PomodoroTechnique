@@ -8,7 +8,10 @@ export function middleware(request: NextRequest) {
     console.log("middleware: withoutAuth");
     return withoutAuth(request);
   }
-  if (request.nextUrl.pathname.startsWith("/users/profile")) {
+  if (
+    request.nextUrl.pathname.startsWith("/users/profile") ||
+    request.nextUrl.pathname.startsWith("/roadmaps/post-roadmap")
+  ) {
     console.log("middleware: withAuth");
     return withAuth(request);
   }
@@ -16,5 +19,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/accounts/login", "/users/profile"],
+  matcher: ["/accounts/login", "/users/profile", "/roadmaps/post-roadmap"],
 };
