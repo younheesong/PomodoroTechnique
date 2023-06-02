@@ -1,10 +1,6 @@
-"use client";
-import Button from "@/components/Button";
-import { useUserContext } from "@/contexts/userContext";
+import GoogleLoginButton from "./components/GoogleLoginButton";
 
 const Login = () => {
-  const { signInWithGoogle } = useUserContext();
-
   return (
     <div className="mx-auto px-10 w-full max-w-sm space-y-10">
       <div>
@@ -14,21 +10,7 @@ const Login = () => {
         </h2>
       </div>
       <div className="flex w-full">
-        <Button
-          bgColor="bg-white"
-          textColor="text-gray-700"
-          borderRound="rounded-md"
-          height="h-12"
-          onClick={() => signInWithGoogle()}
-        >
-          <div className="flex gap-4 justify-center font-medium">
-            <img
-              src="/assets/accounts/login/google_icon.svg"
-              className="w-6 h-6"
-            />
-            구글로 로그인하기
-          </div>
-        </Button>
+        <GoogleLoginButton />
       </div>
     </div>
   );
