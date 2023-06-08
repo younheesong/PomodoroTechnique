@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/studio/node_modules
 /.pnp
 .pnp.js
 
@@ -14,10 +15,14 @@
 
 # production
 /build
+/studio/dist
 
 # misc
 .DS_Store
 *.pem
+.vscode
+*.iml
+.idea
 
 # debug
 npm-debug.log*
@@ -33,7 +38,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
+# Env files created by scripts for working locally
 .env
-.admin-cred.json
+studio/.env.development

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pomodoro-technique-8ba28",
+  "private_key_id": "67e85db2a3dc25e674d338c2f17af838490e1a8d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCYCee8ayrxt6Y7\ntea1leauyB4Y7NjIimBVBmCQluNlPIJdY7CyHMXjVYkFI/+pBH/dLB8/HZS5+O6J\nCYSRT59qyNbO7XnMKCtQ7R6BSixz+XJKZ7JCwXbqQymBlWl9dqIGa4S0wFX3lbo4\nnQCu4739zf8x60MKcX9EiDEPd/xaJIBil3ypc3pA+RZU7CVMYGLpRb5plnM8o0gq\nBEtM7/JWRE7uB4U2R5LSa/238uWRQvAYnzihtlYQflnWgFb5wdIrWVwH0yIvUp6s\nWzqpSpC7mQWM/Yi5hJv3DKMW/y7cIpEg5AJejz4C1yznEFlWF+c8Nnk1gnyX6xxy\nGZPkAEV7AgMBAAECggEAFPKlw4J/MTyyIl9RVqA9ChnieQwGYQ3Hxg88i3oZV0p7\nVRi2MLmMKQ1mSpdc01HJDZUrB6GGFgrj+sJH9Kl5d9diLrKY6csjD2G2++4B//H/\nkEbcpcaizBYi3YrTil4nvCYLlnKQUFjd2+JYmhV2M5uyrJMTR+4UBezp2DgaRI+1\nNWJiMIo21GyfkYkUiHF1XY648V9u/Hq/GqGvKYY4Ee626jsmDwUpcfRovjQJhIMg\nx3FJMGB4fUOnlKDSp4A84dsOSWg7pAoQatui9bU+bpHh5WQqmwjne34DNRWzfKpP\nlrB7QOvezx3Gl83m/SwDNMu+EQB0a4OCsJYvRoc92QKBgQDKaEqFBQJvD4UROse+\n6U/jfVXQdLeBOWtRy7JK/XYKulSr3OobOH8toRezIAVBZqO4czvVmTqPKVqd/Gj7\nOSCwZqsJxA5DRAfUUuRWgbHIad5q3nCp5JYz6QN09rQO1dJQXDROg58HAzlB/UVB\nM3IIPwLow2oEF4Mygk9jEw0JrQKBgQDAS32VHYk+t5jlM+eABTQ5tMJMcC/glEUU\n8GGUycMZfj1joNpFSnm1RYAaK+hlEejwyko4u8tVaXSfonlcGjZQO5/i+8CRy/Qq\nSptiVc2bGs3cOLjG2b716XVgRrsFCwQav+cJLieJBxqVzlhRAV0j2X/hKw/DsuHR\nOxMfb4zAxwKBgQCLIZ8/yo6+uuNUUZxmLchdbpUjYmeVa1vK8QMQqyOOAkEblhJS\nPcamHdrFpVgXea9GpedWTyrCp8GDYbLkJYPD3f7qCptnP4dGOuh8UlBbm/JocZju\nH5PkAOMAbmic3fvgg1DtO2qADoY4Rxlo1S0oX+/nAhSI1YS4nnxldP38TQKBgGur\n2W2dVDPh6aKtJXrxbwTAyeqzBpvhaa0HzBvbvXqQzR7z+kPCJ9PwToJZA49UL/Jj\n0pthy8DPg5W/C+UeaDsUp7oY7QK2CMmFbOvqz22B3LLqr8voMJzRU//Mmvt/55Ry\nz5K8XTbE24X2PE1fTh+8sXYK/pC9oOPfCB4Z/94RAoGACP+VlHkk5Rpnq3y5kyHy\n39N5P4KrESbiJc7Ejv4tf8P2TspSeFK+Eiv5UChqgRxoNjmbilJOQtGDemrSpDgf\nICk5BbobviLRvsuFyY7XJTZFU7ycjte6mYnTN26it54lR0NnLV7KaEAILWfp1LnE\n5JwVYHiqbvAdfhbTofTq2dM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-g8aek@pomodoro-technique-8ba28.iam.gserviceaccount.com",
+  "client_id": "109398719017005542978",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g8aek%40pomodoro-technique-8ba28.iam.gserviceaccount.com"
+}
