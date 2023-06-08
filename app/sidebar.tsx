@@ -1,12 +1,12 @@
 "use client";
-import NavItem from "./layout/components/NavItem";
+import NavItem from "../components/NavItem";
 import SidebarSection from "./layout/components/SidebarSection";
 const Sidebar = () => {
   return (
     <SidebarSection>
-      <NavItem to="/">
+      <NavItem to="/roadmaps">
         <NavItem.Icon iconName="ClipboardDocumentListIcon" />
-        <NavItem.Label label="To Dos" />
+        <NavItem.Label label="로드맵" />
       </NavItem>
       <NavItem to="/">
         <NavItem.Icon iconName="ViewColumnsIcon" />
