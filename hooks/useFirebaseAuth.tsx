@@ -1,9 +1,9 @@
 import FirebaseClient from "@/firebase/config/firebase_client";
-import { User } from "@/firebase/models/user.model";
+import { User } from "@/types/user";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
 import nookies from "nookies";
-import { getUserData } from "@/firebase/db/client/users.service";
+import { getUser } from "@/lib/user.service";
 import { usePathname, useRouter } from "next/navigation";
 const useFirebaseAuth = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -30,6 +30,8 @@ const useFirebaseAuth = () => {
             photoURL: signInResult.user.photoURL,
           }),
         });
+        const user = await getUser({ _id: signInResult.user.uid });
+        setUser(user[0]);
       }
     } catch (err) {
       console.error(err);
@@ -43,7 +45,7 @@ const useFirebaseAuth = () => {
   const reload = () => {
     console.log("hihi");
     console.log(pathname);
-    router.replace(pathname);
+    router.replace(pathname as string);
   };
 
   const signOut = () =>
@@ -66,8 +68,9 @@ const useFirebaseAuth = () => {
     const token = await authUser.getIdToken();
     nookies.set(undefined, "token", token, { path: "/" });
     //setUser 처리
-    const user = await getUserData(authUser?.uid);
-    setUser(user);
+    console.log(authUser?.uid);
+    const user = await getUser({ _id: authUser?.uid });
+    setUser(user[0]);
     setLoading(false);
     reload();
   };
