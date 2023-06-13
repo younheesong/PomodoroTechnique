@@ -1,6 +1,6 @@
 "use client";
-import NavItem from "../components/NavItem";
-import SidebarSection from "./layout/components/SidebarSection";
+import NavItem from "../../../components/NavItem";
+import SidebarSection from "./SidebarSection";
 const Sidebar = () => {
   return (
     <SidebarSection>
