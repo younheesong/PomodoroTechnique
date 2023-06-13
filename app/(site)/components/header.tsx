@@ -1,11 +1,11 @@
 "use client";
 import Button from "@/components/Button";
-import SidebarDialog from "./layout/components/SidebarDialog";
-import SidebarToggleButton from "./layout/components/SidebarToggleButton";
+import SidebarDialog from "./SidebarDialog";
+import SidebarToggleButton from "./SidebarToggleButton";
 import Sidebar from "./sidebar";
 import Link from "next/link";
 import { useUserContext } from "@/contexts/userContext";
-import Menu from "./layout/components/Menu";
+import Menu from "./Menu";
 
 const Header = () => {
   const { user, loading, signOut } = useUserContext();
@@ -29,9 +29,9 @@ const Header = () => {
       <div className="absolute right-0">
         {loading ? (
           <></>
-        ) : user?.userId ? (
+        ) : user?._id ? (
           <span className="px-4 text-white text-sm tracking-tight">
-            {user.username} 님
+            {user?.username} 님
             {/* <Button
               bgColor="bg-white"
               textColor="text-zinc-900"

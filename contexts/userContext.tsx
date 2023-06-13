@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext } from "react";
-import { User } from "@/firebase/models/user.model";
+import { User } from "@/types/user";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 
 export interface InUserContext {

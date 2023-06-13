@@ -2,14 +2,14 @@ import TextInput from "@/components/TextInput";
 import TextareaInput from "@/components/TextareaInput";
 import NumberInput from "@/components/NumberInput";
 import FeedItem from "./FeedItem";
-const PostFeedItem = ({ key, event, isLast }) => {
+const PostFeedItem = ({ key, event, idx, isLast, register }) => {
   return (
     <FeedItem key={key}>
       <FeedItem.Section isLast={isLast}>
         <FeedItem.Icon />
         <div className="flex items-start flex-1 justify-between space-x-4">
           <div className="w-full flex flex-col flex-1">
-            <TextInput />
+            <TextInput {...register(`todos[${idx}].title`)} />
             <div className="ml-4 mt-4">
               <TextareaInput />
             </div>
