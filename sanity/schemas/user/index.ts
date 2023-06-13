@@ -20,8 +20,8 @@ const User = {
     defineField({
       name: "profilePhoto",
       title: "profilePhoto",
-      type: "image",
-      options: { hotspot: true },
+      type: "string",
+      // options: { hotspot: true },
     }),
     defineField({
       name: "accountType",
