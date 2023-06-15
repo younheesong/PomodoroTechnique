@@ -4,73 +4,74 @@ import LabelWrapper from "@/components/LabelWrapper";
 import TextInput from "@/components/TextInput";
 import TextareaInput from "@/components/TextareaInput";
 import { useForm } from "react-hook-form";
-import { CheckIcon } from "@heroicons/react/24/outline";
 import Button from "@/components/Button";
 import PostFeedItem from "./components/PostFeedItem";
-import { useEffect } from "react";
+import NumberInput from "@/components/NumberInput";
+import useGetForms from "./hooks/useGetForms";
 type RoadMap = {
+  category: string;
   title: string;
   desc: string;
-  todos: Array<{ title: string; desc: string }>;
+  curriculums: Array<{ subject: string; detail: string }>;
 };
 
 const PostRoadmap = () => {
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm<RoadMap>({ mode: "onChange" });
-
-  const onSubmit = () => {
-    alert("afa");
-    console.log("adfa");
-    console.log(watch().title);
-    console.log(watch().todos);
+  const defaultFormValues = {
+    category: "hihi",
+    title: "",
+    desc: "",
+    curriculums: [
+      { subject: "11", detail: "22" },
+      { subject: "33", detail: "44" },
+    ],
   };
-  const timeline = [
-    {
-      id: 3,
-      content: "Completed phone screening with",
-      target: "Martha Gardner",
-      href: "#",
-      date: "Sep 28",
-      datetime: "2020-09-28",
-      icon: CheckIcon,
-      iconBackground: "bg-gray-500",
-    },
-    {
-      id: 4,
-      content: "Completed phone screening with",
-      target: "Martha Gardner",
-      href: "#",
-      date: "Sep 28",
-      datetime: "2020-09-28",
-      icon: CheckIcon,
-      iconBackground: "bg-gray-500",
-    },
-  ];
+
+  const {
+    handleSubmit,
+    control,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<RoadMap>({
+    mode: "onSubmit",
+    defaultValues: defaultFormValues as RoadMap,
+  });
+
+  const {
+    category,
+    title,
+    description,
+    curriculums,
+    appendCurriculum,
+    removeCurriculum,
+  } = useGetForms({
+    control,
+  });
+  const onSubmit = (data) => {
+    console.log("adfa");
+    console.log(data);
+  };
+  const onErrors = (errors) => {
+    console.log(errors);
+  };
 
   return (
     <form
-      onSubmit={() => onSubmit()}
+      onSubmit={handleSubmit(onSubmit, onErrors)}
       className="text-white mx-3 grid grid-cols-6 gap-x-6 gap-y-8"
     >
       <LabelWrapper>
+        <Label htmlFor="category">카테고리</Label>
+        <TextInput value={category.value} onChange={category.onChange} />
+      </LabelWrapper>
+      <LabelWrapper>
         <Label htmlFor="title">제목</Label>
-        <TextInput
-          {...register("title", {
-            required: "제목은 필수입니다.",
-          })}
-        />
+        <TextInput value={title.value} onChange={title.onChange} />
       </LabelWrapper>
       <LabelWrapper>
         <Label htmlFor="desc">설명</Label>
         <TextareaInput
-          {...register("desc", {
-            required: "설명은 필수입니다.",
-          })}
+          value={description.value}
+          onChange={description.onChange}
           rows={3}
         />
       </LabelWrapper>
@@ -79,24 +80,32 @@ const PostRoadmap = () => {
 
         <div className="flow-root">
           <ul role="list" className="-mb-8">
-            {timeline.map((event, eventIdx) => (
-              <PostFeedItem
-                key={event.id}
-                idx={eventIdx}
-                event={event}
-                isLast={eventIdx === timeline.length - 1}
-                register={register}
-              />
+            {curriculums.map((curri, idx) => (
+              <div key={curri.curriclumnId}>
+                <PostFeedItem
+                  isLast={idx === curriculums.length - 1}
+                  // addItem={appendCurriculum}
+                  addItem={() => {
+                    console.log("1");
+                  }}
+                  removeItem={() => console.log(2)} //removeCurriculum(idx)}
+                >
+                  <TextInput {...register(`curriculums.${idx}.subject`)} />
+                  <div className="ml-4 mt-4">
+                    <TextareaInput {...register(`curriculums.${idx}.detail`)} />
+                  </div>
+                  <div className="flex items-center w-[200px]">
+                    <NumberInput defaultValue={1} min={0} />H
+                    <NumberInput defaultValue={30} min={0} max={60} />M
+                  </div>
+                </PostFeedItem>
+              </div>
             ))}
           </ul>
         </div>
       </LabelWrapper>
       <div className="col-start-6">
-        <Button
-          onClick={handleSubmit(onSubmit)}
-          bgColor="bg-indigo-600"
-          borderRound="rounded-md"
-        >
+        <Button type="submit" bgColor="bg-indigo-600" borderRound="rounded-md">
           등록
         </Button>
       </div>
