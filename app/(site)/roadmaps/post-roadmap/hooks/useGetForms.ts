@@ -18,7 +18,7 @@ export default function useGetForms({ control }) {
 
   const {
     fields: curriculums,
-    append: appendCurriculum,
+    insert: insertCurriculum,
     remove: removeCurriculum,
   } = useFieldArray({
     name: "curriculums",
@@ -31,7 +31,7 @@ export default function useGetForms({ control }) {
     title,
     description,
     curriculums,
-    appendCurriculum,
+    insertCurriculum,
     removeCurriculum,
   };
 }
