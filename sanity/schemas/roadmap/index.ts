@@ -45,7 +45,9 @@ const Roadmap = {
           name: "curriculumItem",
           fields: [
             { type: "string", name: "subject" },
-            { type: "string", name: "explanation" },
+            { type: "string", name: "detail" },
+            { type: "number", name: "requiredTimeHour" },
+            { type: "number", name: "requiredTimeMin" },
           ],
         },
       ],
