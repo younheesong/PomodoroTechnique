@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 45% !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: hsla(0, 0%, 100%, 0.85);
+  border-radius: 50%;
+  color: #333 !important;
+  font-weight: 700;
+  outline: 0;
+
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 16px !important;
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  left: 10px;
+  right: auto;
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  right: 10px;
+  left: auto;
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0;
+  cursor: auto;
+  pointer-events: none;
+}
